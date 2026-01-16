@@ -76,11 +76,11 @@ export default function Home() {
       <h1>Welcome to Your Digital Garden 🌿</h1>
       <p>A place to store your notes, connect ideas, and visualize knowledge.</p>
 
-      <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
+      <div style={{ display: 'flex', gap: '12px', marginTop: '20px', flexWrap: 'wrap' }}>
         <Link href="/notes/new" className="btn">+ Create New Note</Link>
         <button 
           onClick={() => setShowUpload(!showUpload)} 
-          className="btn--secondary"
+          className="btn btn--secondary"
         >
           📁 Import Files
         </button>
@@ -95,7 +95,7 @@ export default function Home() {
         </div>
       )}
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '30px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '30px', flexWrap: 'wrap', gap: '12px' }}>
         <h2>Recent Notes ({notes.length})</h2>
         <div className="small" style={{ color: 'var(--muted)' }}>
           💡 Drag notes to reorder

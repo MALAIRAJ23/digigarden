@@ -18,9 +18,15 @@ export const AuthProvider = ({ children }) => {
     }
 
     const getSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession()
-      setUser(session?.user ?? null)
-      setLoading(false)
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        setUser(session?.user ?? null)
+      } catch (error) {
+        console.error('Session error:', error)
+        setUser(null)
+      } finally {
+        setLoading(false)
+      }
     }
 
     getSession()
@@ -33,21 +39,27 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const signUp = async (email, password) => {
-    if (!supabase) throw new Error('Supabase not configured')
+    if (!supabase) {
+      throw new Error('Cloud features are not available. Please check your Supabase configuration.')
+    }
     const { data, error } = await supabase.auth.signUp({ email, password })
     if (error) throw error
     return data
   }
 
   const signIn = async (email, password) => {
-    if (!supabase) throw new Error('Supabase not configured')
+    if (!supabase) {
+      throw new Error('Cloud features are not available. Please check your Supabase configuration.')
+    }
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) throw error
     return data
   }
 
   const signOut = async () => {
-    if (!supabase) throw new Error('Supabase not configured')
+    if (!supabase) {
+      throw new Error('Cloud features are not available. Please check your Supabase configuration.')
+    }
     const { error } = await supabase.auth.signOut()
     if (error) throw error
     router.push('/login')

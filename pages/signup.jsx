@@ -40,10 +40,10 @@ export default function Signup() {
 
   if (success) {
     return (
-      <div style={{ maxWidth: 400, margin: "60px auto" }}>
+      <div style={{ maxWidth: 400, margin: "60px auto", padding: "0 16px" }}>
         <div className="card" style={{ textAlign: "center" }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
-          <h2>Account Created!</h2>
+          <h2 style={{ fontSize: "clamp(20px, 4vw, 24px)" }}>Account Created!</h2>
           <p style={{ color: "var(--muted)" }}>
             Check your email to verify your account. Redirecting...
           </p>
@@ -53,9 +53,9 @@ export default function Signup() {
   }
 
   return (
-    <div style={{ maxWidth: 400, margin: "60px auto" }}>
+    <div style={{ maxWidth: 400, margin: "60px auto", padding: "0 16px" }}>
       <div className="card">
-        <h1>Create Account</h1>
+        <h1 style={{ fontSize: "clamp(24px, 5vw, 36px)" }}>Create Account</h1>
         <p style={{ color: "var(--muted)", marginBottom: 24 }}>
           Start your Digital Garden journey today.
         </p>

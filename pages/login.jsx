@@ -28,9 +28,9 @@ export default function Login() {
   }
 
   return (
-    <div style={{ maxWidth: 400, margin: "60px auto" }}>
+    <div style={{ maxWidth: 400, margin: "60px auto", padding: "0 16px" }}>
       <div className="card">
-        <h1>Login to Digital Garden</h1>
+        <h1 style={{ fontSize: "clamp(24px, 5vw, 36px)" }}>Login to Digital Garden</h1>
         <p style={{ color: "var(--muted)", marginBottom: 24 }}>Welcome back! Sign in to access your notes.</p>
 
         {error && (
