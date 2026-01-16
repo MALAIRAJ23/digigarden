@@ -2,6 +2,7 @@
 import "../styles/globals.css";
 import Link from "next/link";
 import Head from "next/head";
+import Script from "next/script";
 import { useState, useEffect } from "react";
 import { ToastProvider } from "../components/ToastContext";
 import { AuthProvider, useAuth } from "../contexts/AuthContext";
@@ -37,6 +38,19 @@ export default function App({ Component, pageProps }) {
             <title>Digital Garden</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
           </Head>
+          
+          <Script
+            id="env-config"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.ENV = {
+                  NEXT_PUBLIC_SUPABASE_URL: '${process.env.NEXT_PUBLIC_SUPABASE_URL || ''}',
+                  NEXT_PUBLIC_SUPABASE_ANON_KEY: '${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''}'
+                };
+              `
+            }}
+          />
 
           <Header onOpenCommandPalette={() => setShowCommandPalette(true)} />
 
